@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quitanda do Zé - Frutas fresquinhas</title>
+  <style>
+    :root {
+      --fundo: #bfe3a4;
+      --verde-escuro: #1f5130;
+      --laranja: #f28c1b;
+      --branco: #fffdf8;
+      --linha: #d9e9cc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      background-color: var(--fundo);
+      color: var(--verde-escuro);
+      font-family: Verdana, Geneva, sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    header svg {
+      width: 110px;
+      height: 110px;
+    }
+
+    h1 {
+      margin: 8px 0 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    section {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0 0 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.4rem;
+    }
+
+    .aviso {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+    }
+
+    .tabela-rolavel { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid var(--linha);
+    }
+
+    th {
+      background: var(--verde-escuro);
+      color: var(--branco);
+      font-weight: bold;
+    }
+
+    td.preco, th.preco { text-align: right; white-space: nowrap; }
+    td.codigo { font-weight: bold; }
+
+    .pedido { text-align: center; }
+
+    .telefone {
+      display: inline-block;
+      margin: 8px 0;
+      padding: 12px 24px;
+      background: var(--laranja);
+      color: #2b1600;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 999px;
+    }
+
+    .telefone:focus-visible {
+      outline: 3px solid var(--verde-escuro);
+      outline-offset: 3px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <!-- Logo simples: uma laranja com folha -->
+      <svg viewBox="0 0 120 120" role="img" aria-label="Logo da Quitanda do Zé: uma laranja com folha">
+        <circle cx="60" cy="68" r="42" fill="#f28c1b"/>
+        <ellipse cx="45" cy="52" rx="10" ry="6" fill="#f8b45c" transform="rotate(-35 45 52)"/>
+        <rect x="58" y="18" width="5" height="12" rx="2" fill="#1f5130"/>
+        <path d="M63 24 C 78 8, 98 14, 100 22 C 90 34, 72 34, 63 24 Z" fill="#2f8f4e"/>
+      </svg>
+      <h1>Quitanda do Zé</h1>
+      <p>Frutas fresquinhas com entrega no bairro</p>
+    </header>
+
+    <section>
+      <h2>Frutas da semana</h2>
+      <p class="aviso">Anote o código da fruta para fazer o seu pedido.</p>
+      <div class="tabela-rolavel">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Produto</th>
+              <th class="preco">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="codigo">F001</td>
+              <td>Maçã</td>
+              <td class="preco">R$ 8,90 / kg</td>
+            </tr>
+            <tr>
+              <td class="codigo">F002</td>
+              <td>Banana prata</td>
+              <td class="preco">R$ 6,50 / kg</td>
+            </tr>
+            <tr>
+              <td class="codigo">F003</td>
+              <td>Laranja</td>
+              <td class="preco">R$ 4,50 / kg</td>
+            </tr>
+            <tr>
+              <td class="codigo">F004</td>
+              <td>Mamão formosa</td>
+              <td class="preco">R$ 7,90 / kg</td>
+            </tr>
+            <tr>
+              <td class="codigo">F005</td>
+              <td>Melancia</td>
+              <td class="preco">R$ 3,90 / kg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pedido">
+      <h2>Faça seu pedido por telefone</h2>
+      <p class="aviso">Ligue, informe os códigos e as quantidades que você quer.</p>
+      <a class="telefone" href="tel:+5541999990000">(41) 99999-0000</a>
+    </section>
+
+    <footer>
+      <p>Quitanda do Zé - preços válidos durante a semana.</p>
+    </footer>
+  </main>
+</body>
+</html>

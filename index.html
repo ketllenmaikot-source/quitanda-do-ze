@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f3e9">
+  <meta name="description" content="Frutas fresquinhas e selecionadas com carinho na Quitanda do Zé.">
+  <title>A Quitanda do Zé | Frutas de verdade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #203b2b;
+      --green: #326346;
+      --deep-green: #214a34;
+      --leaf: #dce9d4;
+      --cream: #f4f3e9;
+      --paper: #fffef8;
+      --orange: #df7049;
+      --yellow: #f3c94d;
+      --muted: #69766b;
+      --line: #dfe2d4;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .topline { padding: 9px 16px; background: var(--deep-green); color: #fffdf4; text-align: center; font-size: 12px; }
+    .topline strong { color: var(--yellow); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 80px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: max-content; }
+    .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--yellow); font-size: 23px; transform: rotate(-8deg); }
+    .brand-name { font: 600 21px/1 var(--serif); }
+    .brand-name small { display: block; margin-top: 5px; color: var(--muted); font: 700 9px/1 var(--sans); letter-spacing: 1.2px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 30px; color: #526354; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--orange); }
+    .cart-button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); background: transparent; padding: 9px 13px; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .cart-count { display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--green); color: white; font-size: 11px; }
+
+    .hero { position: relative; overflow: hidden; background: var(--leaf); }
+    .hero::after { position: absolute; top: -200px; right: 33%; width: 280px; height: 280px; border: 1px solid rgba(50,99,70,.16); border-radius: 50%; box-shadow: 0 0 0 24px rgba(50,99,70,.025), 0 0 0 48px rgba(50,99,70,.025); content: ""; pointer-events: none; }
+    .hero-inner { display: grid; grid-template-columns: 1fr .88fr; align-items: center; gap: 38px; min-height: 465px; padding-block: 48px; }
+    .hero-copy { position: relative; z-index: 1; animation: rise .7s both; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--orange); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 570px; margin-bottom: 17px; font: 600 clamp(48px, 6vw, 76px)/.99 var(--serif); }
+    h1 em { color: var(--orange); font-style: normal; }
+    .hero-copy > p:not(.eyebrow) { max-width: 430px; margin-bottom: 25px; color: #53695a; font-size: 15px; line-height: 1.7; }
+    .primary-link { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 18px; background: var(--green); color: white; font-size: 13px; font-weight: 700; transition: .2s; }
+    .primary-link:hover { background: var(--deep-green); transform: translateY(-2px); }
+    .primary-link span { font-size: 18px; }
+    .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 21px; color: var(--muted); font-size: 11px; }
+    .hero-note b { color: var(--ink); }
+    .hero-image { position: relative; height: 355px; animation: rise .8s .12s both; }
+    .hero-image img { display: block; width: 100%; height: 100%; border-radius: 48% 48% 3px 3px; object-fit: cover; }
+    .image-tag { position: absolute; bottom: 19px; left: -27px; display: grid; place-items: center; width: 94px; height: 94px; border: 5px solid var(--leaf); border-radius: 50%; background: var(--yellow); text-align: center; font: 600 15px/1.05 var(--serif); transform: rotate(-8deg); }
+    .image-tag small { display: block; font: 700 8px/1 var(--sans); letter-spacing: .8px; text-transform: uppercase; }
+
+    .benefits { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .benefit-row { display: grid; grid-template-columns: repeat(3, 1fr); padding-block: 18px; }
+    .benefit { display: flex; align-items: center; justify-content: center; gap: 11px; min-height: 48px; border-right: 1px solid var(--line); }
+    .benefit:last-child { border: 0; }
+    .benefit-icon { font-size: 21px; }
+    .benefit strong, .benefit small { display: block; }
+    .benefit strong { font-size: 12px; }
+    .benefit small { margin-top: 3px; color: var(--muted); font-size: 10px; }
+
+    .shop { padding-block: 70px 76px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
+    .section-heading .eyebrow { margin-bottom: 9px; }
+    h2 { margin-bottom: 0; font: 600 39px/1.05 var(--serif); }
+    .section-note { margin: 0 0 3px; color: var(--muted); font-size: 12px; }
+    .shop-tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter { border: 1px solid var(--line); background: transparent; padding: 9px 13px; font-size: 11px; font-weight: 600; cursor: pointer; transition: .18s; }
+    .filter:hover, .filter.active { border-color: var(--green); background: var(--green); color: white; }
+    .search { display: flex; align-items: center; gap: 8px; width: min(230px, 100%); border-bottom: 1px solid #9da99a; padding: 8px 0; color: var(--muted); }
+    .search span { font-size: 18px; }
+    .search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; }
+    .search input::placeholder { color: #7f897e; }
+    .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .product { overflow: hidden; border: 1px solid var(--line); background: var(--paper); animation: rise .4s both; }
+    .product-photo { position: relative; overflow: hidden; aspect-ratio: 1.25; background: #e9efdf; }
+    .product-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .product:hover .product-photo img { transform: scale(1.04); }
+    .product-label { position: absolute; top: 10px; left: 10px; padding: 6px 8px; background: var(--yellow); font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; }
+    .product-info { padding: 14px 14px 13px; }
+    .product-info h3 { margin-bottom: 4px; font: 600 20px/1.1 var(--serif); }
+      .product-code { margin-bottom: 5px !important; color: var(--green); font-size: 10px !important; font-weight: 700; }
+    .product-info p { margin-bottom: 14px; color: var(--muted); font-size: 10px; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .price { font-size: 14px; font-weight: 700; }
+    .price small { color: var(--muted); font-size: 10px; font-weight: 500; }
+    .add-button { display: grid; place-items: center; width: 33px; height: 33px; border: 0; background: var(--green); color: white; font-size: 21px; cursor: pointer; }
+    .add-button:hover { background: var(--orange); }
+    .empty-state { grid-column: 1 / -1; padding: 34px; color: var(--muted); text-align: center; }
+
+    .market-band { background: var(--orange); color: white; }
+    .market-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-block: 28px; }
+    .market-inner p { margin: 0; font: 500 24px/1.2 var(--serif); }
+    .market-inner small { display: block; margin-bottom: 5px; font: 700 9px/1 var(--sans); letter-spacing: 1px; text-transform: uppercase; }
+    .market-inner a { flex: 0 0 auto; border: 1px solid rgba(255,255,255,.7); padding: 12px 16px; font-size: 11px; font-weight: 700; }
+    .market-inner a:hover { background: white; color: var(--orange); }
+    footer { background: var(--deep-green); color: #f8f6e9; }
+    .footer-inner { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; padding-block: 38px; }
+    .footer-brand { margin-bottom: 11px; font: 600 22px/1 var(--serif); }
+    .footer-inner p, .footer-inner a { color: #cbd9cb; font-size: 11px; line-height: 1.8; }
+    .footer-inner p { margin-bottom: 0; }
+    .footer-inner h3 { margin-bottom: 12px; color: var(--yellow); font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+    .footer-bottom { padding-block: 13px; border-top: 1px solid rgba(255,255,255,.14); color: #cbd9cb; font-size: 9px; }
+    .footer-bottom .wrap { display: flex; justify-content: space-between; gap: 16px; }
+    .toast { position: fixed; right: 20px; bottom: 20px; z-index: 4; padding: 13px 17px; background: var(--deep-green); color: white; font-size: 12px; opacity: 0; transform: translateY(12px); pointer-events: none; transition: .22s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 800px) {
+      .nav-links { gap: 16px; }
+      .hero-inner { grid-template-columns: 1fr .78fr; gap: 20px; min-height: 400px; }
+      .hero-image { height: 300px; }
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .product-photo { aspect-ratio: 1.45; }
+    }
+    @media (max-width: 580px) {
+      .wrap { width: min(100% - 32px, 440px); }
+      .topline { font-size: 10px; }
+      .nav { min-height: 68px; gap: 10px; }
+      .brand { gap: 8px; }
+      .brand-mark { width: 36px; height: 36px; font-size: 20px; }
+      .brand-name { font-size: 18px; }
+      .brand-name small { font-size: 8px; }
+      .nav-links { display: none; }
+      .cart-button { padding: 8px; font-size: 11px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 16px; padding-block: 40px 30px; }
+      h1 { max-width: 390px; font-size: 53px; }
+      .hero-copy > p:not(.eyebrow) { max-width: 350px; font-size: 13px; }
+      .hero-image { width: 84%; height: 230px; margin: 0 auto 0 24px; }
+      .image-tag { bottom: 13px; left: -22px; width: 78px; height: 78px; font-size: 13px; }
+      .benefit-row { grid-template-columns: 1fr; padding-block: 8px; }
+      .benefit { justify-content: flex-start; min-height: 56px; padding-left: 11%; border-right: 0; border-bottom: 1px solid var(--line); }
+      .benefit:last-child { border-bottom: 0; }
+      .shop { padding-block: 52px; }
+      .section-heading { display: block; margin-bottom: 18px; }
+      h2 { font-size: 34px; }
+      .section-note { margin-top: 9px; }
+      .shop-tools { align-items: flex-start; flex-direction: column-reverse; }
+      .search { width: 100%; }
+      .filters { gap: 6px; }
+      .filter { padding: 8px 10px; font-size: 10px; }
+      .products { gap: 9px; }
+      .product-photo { aspect-ratio: 1.05; }
+      .product-info { padding: 11px 10px; }
+      .product-info h3 { font-size: 17px; }
+      .product-info p { font-size: 9px; }
+      .price { font-size: 12px; }
+      .add-button { width: 31px; height: 31px; }
+      .market-inner { align-items: flex-start; flex-direction: column; gap: 17px; }
+      .market-inner p { font-size: 22px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 25px 16px; }
+      .footer-about { grid-column: 1 / -1; }
+      .footer-bottom .wrap { flex-direction: column; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"><strong>Colheita fresquinha</strong> toda semana · Entrega no bairro a partir de R$ 5</div>
+  <header>
+    <nav class="nav wrap" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="A Quitanda do Zé, início"><span class="brand-mark" aria-hidden="true">🍊</span><span class="brand-name">A Quitanda do Zé<small>frutas de verdade</small></span></a>
+      <div class="nav-links"><a href="#inicio">Início</a><a href="#produtos">Frutas</a><a href="#sobre">Nossa quitanda</a></div>
+      <button class="cart-button" id="cartButton" type="button" aria-label="Ver itens na sacola">Sacola <span class="cart-count" id="cartCount">0</span></button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Da feira direto pra sua mesa</p>
+          <h1>O melhor da estação, <em>pertinho.</em></h1>
+          <p>Frutas escolhidas com carinho, cheias de sabor e prontas para deixar seu dia mais gostoso.</p>
+          <a class="primary-link" href="#produtos">Escolha suas frutas <span aria-hidden="true">→</span></a>
+          <div class="hero-note"><span aria-hidden="true">✳</span><span><b>Fresquinho de verdade</b> · separado a cada pedido</span></div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1100&q=85" alt="Frutas frescas e coloridas prontas para a feira">
+          <div class="image-tag"><span><small>com carinho</small>Da nossa<br>feira pra você</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="benefits" aria-label="Vantagens da quitanda">
+      <div class="benefit-row wrap">
+        <div class="benefit"><span class="benefit-icon" aria-hidden="true">🌱</span><span><strong>Escolhidas à mão</strong><small>Qualidade em cada fruta</small></span></div>
+        <div class="benefit"><span class="benefit-icon" aria-hidden="true">🛵</span><span><strong>Entrega pertinho</strong><small>Consulte a taxa pelo WhatsApp</small></span></div>
+        <div class="benefit"><span class="benefit-icon" aria-hidden="true">🍃</span><span><strong>Mais sabor, menos caminho</strong><small>Produtos da estação</small></span></div>
+      </div>
+    </section>
+    <section class="shop wrap" id="produtos">
+      <div class="section-heading"><div><p class="eyebrow">Tem coisa boa na banca</p><h2>Escolha a dedo.</h2></div><p class="section-note">Preços por quilo, exceto quando indicado.</p></div>
+      <div class="shop-tools">
+        <div class="filters" role="group" aria-label="Filtrar frutas">
+          <button class="filter active" type="button" data-category="todas">Todas</button>
+          <button class="filter" type="button" data-category="frutas">Frutas</button>
+          <button class="filter" type="button" data-category="citricas">Cítricas</button>
+          <button class="filter" type="button" data-category="ofertas">Da estação</button>
+        </div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Buscar uma fruta..." aria-label="Buscar frutas"></label>
+      </div>
+      <div class="products" id="productGrid" aria-live="polite"></div>
+    </section>
+    <section class="market-band" id="sobre">
+      <div class="market-inner wrap"><p><small>É de pertinho e feito com cuidado</small>Seu pedido, separado na hora pelo Zé.</p><a href="https://wa.me/5500000000000" class="whatsapp-link" target="_blank" rel="noopener">Fale com a quitanda ↗</a></div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner wrap">
+      <div class="footer-about"><div class="footer-brand">A Quitanda do Zé 🍊</div><p>Frutas fresquinhas e um atendimento daqueles, de quem já conhece você pelo nome.</p></div>
+      <div><h3>Visite a quitanda</h3><p>Rua das Flores, 123 · Seu bairro<br>Seg a sáb, das 7h às 18h</p></div>
+      <div><h3>Faça seu pedido</h3><p><a class="whatsapp-link" href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp: (11) 99999-9999</a><br>Entrega local e retirada</p></div>
+    </div>
+    <div class="footer-bottom"><div class="wrap"><span>© 2026 A Quitanda do Zé</span><span>Feito com carinho e fruta boa.</span></div></div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const products = [
+      { name: "Morango", detail: "Caixinha doce e perfumada", price: 12.9, unit: "caixa", category: "frutas", label: "Da estação", image: "photo-1464965911861-746a04b4bca6" },
+      { name: "Laranja-pera", detail: "Suculenta, ótima pro suco", price: 6.49, unit: "kg", category: "citricas", label: "Queridinha", image: "photo-1547514701-42782101795e" },
+      { name: "Banana-prata", detail: "No ponto, direto da roça", price: 7.99, unit: "kg", category: "frutas", label: "Da estação", image: "photo-1571771894821-ce9b6c11b08e" },
+      { name: "Limão-taiti", detail: "Fresquinho e cheio de caldo", price: 5.49, unit: "kg", category: "citricas", label: "Bom de feira", image: "photo-1582979512210-99b6a53386f9" },
+      { name: "Manga-palmer", detail: "Macia, doce e sem fiapo", price: 8.9, unit: "kg", category: "frutas", label: "Da estação", image: "photo-1553279768-865429fa0078" },
+      { name: "Abacate", detail: "Cremoso e no ponto", price: 9.9, unit: "kg", category: "frutas", label: "Bom de feira", image: "photo-1523049673857-eb18f1d7b578" },
+      { name: "Tangerina", detail: "Fácil de descascar, fácil de amar", price: 7.49, unit: "kg", category: "citricas", label: "Da estação", image: "photo-1547514701-42782101795e" },
+      { name: "Uva roxa", detail: "Docinha, sem semente", price: 14.9, unit: "bandeja", category: "frutas", label: "Novidade", image: "photo-1537640538966-79f369143f8f" }
+    ];
+    const cart = new Map();
+    let activeCategory = "todas";
+    const grid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("searchInput");
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function renderProducts() {
+      const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
+      const visible = products.filter((product) => {
+        const matchesCategory = activeCategory === "todas" || (activeCategory === "ofertas" ? product.label === "Da estação" : product.category === activeCategory);
+        return matchesCategory && product.name.toLocaleLowerCase("pt-BR").includes(query);
+      });
+      grid.innerHTML = visible.length ? visible.map((product) => {
+        const index = products.indexOf(product);
+        return `<article class="product"><div class="product-photo"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=650&q=80" alt="${product.name}" loading="lazy"><span class="product-label">${product.label}</span></div><div class="product-info"><h3>${product.name}</h3><p>${product.detail}</p><div class="product-bottom"><span class="price">R$ ${product.price.toFixed(2).replace(".", ",")} <small>/ ${product.unit}</small></span><button class="add-button" type="button" data-index="${index}" aria-label="Adicionar ${product.name} à sacola">+</button></div></div></article>`;
+      }).join("") : '<p class="empty-state">Não encontramos essa fruta. Tente outra busca.</p>';
+    }
+
+    function updateCart() {
+      const count = [...cart.values()].reduce((total, quantity) => total + quantity, 0);
+      document.getElementById("cartCount").textContent = count;
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    document.querySelector(".filters").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      document.querySelectorAll(".filter").forEach((filter) => filter.classList.toggle("active", filter === button));
+      renderProducts();
+    });
+    searchInput.addEventListener("input", renderProducts);
+    grid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-index]");
+      if (!button) return;
+      const index = Number(button.dataset.index);
+      cart.set(index, (cart.get(index) || 0) + 1);
+      updateCart();
+      showToast(`${products[index].name} adicionada à sacola`);
+    });
+    document.getElementById("cartButton").addEventListener("click", () => {
+      if (cart.size === 0) {
+        showToast("Sua sacola ainda está vazia");
+        return;
+      }
+      const message = [...cart.entries()].map(([index, quantity]) => `${quantity}x ${products[index].name}`).join(", ");
+      const whatsapp = `https://wa.me/5500000000000?text=${encodeURIComponent(`Olá, Zé! Quero pedir: ${message}. Pode confirmar disponibilidade e entrega?`)}`;
+      window.open(whatsapp, "_blank", "noopener");
+    });
+    renderProducts();
+  </script>
+</body>
+</html>
